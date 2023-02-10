@@ -1,0 +1,80 @@
+<link rel ="stylesheet" href = "style.css">
+<html>
+  <head>
+   
+    <meta charset = "utf-8">
+    <meta name = 'viewport'content="width=device-width,inital-scale=1">
+    <style>
+      
+      h1{
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 35px ;
+      }
+      #wbold{
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+        font-size: 25px;
+      }
+      body{
+      background-image: url("backround.jpg");
+      background-repeat: no-repeat;
+      background-color: #cccccc;
+      font-size:25px;
+      }
+      p{display: inline;}
+      #special{
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <nav>
+
+
+<body>
+    <title>Joe's Hotdog Stand</title>
+    <h1> Joe's Hotdog Stand</h1> 
+    <button onclick="placeOrder()">Place an order</button> </br> </br>
+    <p id = "wbold"> Number of Hotdogs:</p>
+    <p id="hotdogs"></p> </br> </br> 
+    <p id = "wbold"> Number of Fries:</p>
+    <p id="fries"></p> </br> </br> 
+    <p id = "wbold"> Number of Sodas:</p>
+    <p id="soda"></p></br> </br> 
+    <p id="special"></p> <br> <br>
+    <p id = "wbold"> Subtotal:</p>
+    <p id="subT"></p></br> </br> 
+    <p id = "wbold"> Tax:</p> 
+    <p id="tax"></p></br> </br> 
+    <p id = "wbold"> Final Amount: </p> 
+    <p id="fAmount"></p></br> </br> 
+    <script>
+      function placeOrder(){
+        numHotdogs = prompt("How many hotdogs?")
+        numFries = prompt("How many fries?")
+        numSodas = prompt("How many sodas?")
+        document.getElementById("fries").innerHTML = numFries
+        document.getElementById("hotdogs").innerHTML = numHotdogs
+        document.getElementById("soda").innerHTML = numSodas
+
+        subtotal = (numHotdogs*4)+(numFries*3.50)+(numSodas*1.75)
+        if (subtotal >= 20){
+          document.getElementById("special").innerHTML = "You got a special offer of 10% off!"
+          discount = subtotal*.1
+          subtotal = subtotal - discount
+        }
+        document.getElementById("subT").innerHTML = subtotal
+        tax = subtotal *.0625
+        tax= Math.round(tax * 100) / 100
+        document.getElementById("tax").innerHTML = tax
+        finalamount = subtotal + tax
+        finalamount = Math.round(finalamount*100)/100
+        document.getElementById("fAmount").innerHTML = finalamount
+      }
+
+
+    </script>
+
+</body>
+</html>
