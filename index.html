@@ -1,4 +1,3 @@
-<link rel ="stylesheet" href = "style.css">
 <html>
   <head>
    
@@ -29,10 +28,9 @@
       }
     </style>
   </head>
-
 <body>
-    <title>Joe's Hotdogs</title>
-    <h1> Joe's Hotdogs </h1> 
+    <title>Joe's Hotdogs </title>
+    <h1> Joe's Hotdogs</h1> 
     <button onclick="placeOrder()">Place an order</button> </br> </br>
     <p id = "wbold"> Number of Hotdogs:</p>
     <p id="hotdogs"></p> </br> </br> 
@@ -48,6 +46,14 @@
     <p id = "wbold"> Final Amount: </p> 
     <p id="fAmount"></p></br> </br> 
     <script>
+
+      function twodecimal(num){
+        newNum = num * 100
+        newNumInt = parseInt(newNum)
+        final = newNumInt/100
+        console.log(final)
+        return final
+      }
       function placeOrder(){
         numHotdogs = prompt("How many hotdogs?")
         numFries = prompt("How many fries?")
@@ -62,15 +68,15 @@
           discount = subtotal*.1
           subtotal = subtotal - discount
         }
+        subtotal = twodecimal(subtotal)
         document.getElementById("subT").innerHTML = subtotal
         tax = subtotal *.0625
-        tax= Math.round(tax * 100) / 100
+        tax= twodecimal(tax)
         document.getElementById("tax").innerHTML = tax
         finalamount = subtotal + tax
-        finalamount = Math.round(finalamount*100)/100
+        finalamount = twodecimal(finalamount)
         document.getElementById("fAmount").innerHTML = finalamount
       }
-
 
     </script>
 
