@@ -39,19 +39,19 @@
     <p id = "wbold"> Number of Sodas:</p>
     <p id="soda"></p></br> </br> 
     <p id="special"></p> <br> <br>
-    <p id = "wbold"> Subtotal:</p>
+    <p id = "wbold"> Subtotal:$</p>
     <p id="subT"></p></br> </br> 
-    <p id = "wbold"> Tax:</p> 
+    <p id = "wbold"> Tax:$</p> 
     <p id="tax"></p></br> </br> 
-    <p id = "wbold"> Final Amount: </p> 
+    <p id = "wbold"> Final Amount:$ </p> 
     <p id="fAmount"></p></br> </br> 
     <script>
 
       function twodecimal(num){
-        newNum = num * 100
+        newNum = num + .05
+        newNum = newNum * 100
         newNumInt = parseInt(newNum)
         final = newNumInt/100
-        console.log(final)
         return final
       }
       function placeOrder(){
@@ -69,13 +69,36 @@
           subtotal = subtotal - discount
         }
         subtotal = twodecimal(subtotal)
-        document.getElementById("subT").innerHTML = subtotal
+        decimal =  subtotal.toString().length - subtotal.toString().indexOf(".")
+        if(decimal < 3){
+          printSubtotal = subtotal + '0'
+        }
+        else{
+          printSubtotal = subtotal
+        }
+        document.getElementById("subT").innerHTML = printSubtotal
+
         tax = subtotal *.0625
-        tax= twodecimal(tax)
-        document.getElementById("tax").innerHTML = tax
+        tax=  twodecimal(tax)
+        decimal =  tax.toString().length - tax.toString().indexOf(".")
+        if(decimal < 3){
+          printTax = tax + '0'
+        }
+        else{
+          printTax = tax
+        }
+        document.getElementById("tax").innerHTML = printTax
+
         finalamount = subtotal + tax
         finalamount = twodecimal(finalamount)
-        document.getElementById("fAmount").innerHTML = finalamount
+        decimal =  finalamount.toString().length - finalamount.toString().indexOf(".")
+        if(decimal < 3){
+          printFinalAmount = finalamount+ '0'
+        }
+        else{
+          printFinalAmount = finalamount
+        }
+        document.getElementById("fAmount").innerHTML = printFinalAmount
       }
 
     </script>
